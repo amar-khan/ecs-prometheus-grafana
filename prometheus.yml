@@ -1,0 +1,29 @@
+global:
+  scrape_interval: 5s
+  external_labels:
+    monitor: 'devopsage-monitor'
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+    - targets: ['localhost:9090'] ## IP Address of the localhost
+  - job_name: 'ecs'
+    ec2_sd_configs:
+      - region: ap-southeast-1
+        port: 9100 # referred to nodeExporter exposed port
+        # role_arn: arn:aws:iam::xxxxxxxxxx:role/ecsInstanceRole
+        access_key: xxxxxxxxxxxxxxxxxxxxxxx
+        secret_key: xxxxxxxxxxxxxxxxxxxxxxx
+        filters:
+        - name: tag:environment
+          values:
+          - qa
+  - job_name: ecs_CAdvisor
+    ec2_sd_configs:
+      - port: 9200 # referred to cAdvisor exposed port
+        #role_arn: arn:aws:iam::xxxxxxxxxxx:role/Ec2-Instance-Role
+        access_key: xxxxxxxxxxxxxxxxxxxxxxx
+        secret_key: xxxxxxxxxxxxxxxxxxxxxxx     
+        filters:
+        - name: tag:environment
+          values:
+          - qa                  

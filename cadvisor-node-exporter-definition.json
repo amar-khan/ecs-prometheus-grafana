@@ -1,0 +1,189 @@
+{
+    "ipcMode": null,
+    "executionRoleArn": null,
+    "containerDefinitions": [
+        {
+            "dnsSearchDomains": null,
+            "environmentFiles": null,
+            "logConfiguration": null,
+            "entryPoint": null,
+            "portMappings": [
+                {
+                    "hostPort": 9100,
+                    "protocol": "tcp",
+                    "containerPort": 9100
+                }
+            ],
+            "command": null,
+            "linuxParameters": null,
+            "cpu": 512,
+            "environment": [],
+            "resourceRequirements": null,
+            "ulimits": null,
+            "dnsServers": null,
+            "mountPoints": [],
+            "workingDirectory": null,
+            "secrets": null,
+            "dockerSecurityOptions": null,
+            "memory": 256,
+            "memoryReservation": 128,
+            "volumesFrom": [],
+            "stopTimeout": null,
+            "image": "prom/node-exporter",
+            "startTimeout": null,
+            "firelensConfiguration": null,
+            "dependsOn": null,
+            "disableNetworking": null,
+            "interactive": null,
+            "healthCheck": null,
+            "essential": true,
+            "links": null,
+            "hostname": null,
+            "extraHosts": null,
+            "pseudoTerminal": null,
+            "user": null,
+            "readonlyRootFilesystem": null,
+            "dockerLabels": null,
+            "systemControls": null,
+            "privileged": null,
+            "name": "node-exporter"
+        },
+        {
+            "dnsSearchDomains": null,
+            "environmentFiles": null,
+            "logConfiguration": null,
+            "entryPoint": null,
+            "portMappings": [
+                {
+                    "hostPort": 9200,
+                    "protocol": "tcp",
+                    "containerPort": 8080
+                }
+            ],
+            "command": null,
+            "linuxParameters": null,
+            "cpu": 512,
+            "environment": [],
+            "resourceRequirements": null,
+            "ulimits": null,
+            "dnsServers": null,
+            "mountPoints": [
+                {
+                    "readOnly": true,
+                    "containerPath": "/rootfs",
+                    "sourceVolume": "root"
+                },
+                {
+                    "readOnly": true,
+                    "containerPath": "/cgroup",
+                    "sourceVolume": "cgroup"
+                },
+                {
+                    "readOnly": true,
+                    "containerPath": "/var/run",
+                    "sourceVolume": "var_run"
+                },
+                {
+                    "readOnly": true,
+                    "containerPath": "/var/lib/docker",
+                    "sourceVolume": "var_lib_docker"
+                },
+                {
+                    "readOnly": true,
+                    "containerPath": "/dev/disk",
+                    "sourceVolume": "dev_disk"
+                },
+                {
+                    "readOnly": true,
+                    "containerPath": "/sys/fs/cgroup",
+                    "sourceVolume": "cgroup"
+                }
+            ],
+            "workingDirectory": null,
+            "secrets": null,
+            "dockerSecurityOptions": null,
+            "memory": 256,
+            "memoryReservation": 128,
+            "volumesFrom": [],
+            "stopTimeout": null,
+            "image": "google/cadvisor",
+            "startTimeout": null,
+            "firelensConfiguration": null,
+            "dependsOn": null,
+            "disableNetworking": null,
+            "interactive": null,
+            "healthCheck": null,
+            "essential": true,
+            "links": null,
+            "hostname": null,
+            "extraHosts": null,
+            "pseudoTerminal": null,
+            "user": null,
+            "readonlyRootFilesystem": false,
+            "dockerLabels": null,
+            "systemControls": null,
+            "privileged": true,
+            "name": "cadvisor-exporter"
+        }
+    ],
+    "memory": "512",
+    "taskRoleArn": "arn:aws:iam::xxxxxxxxxxx:role/ecsTaskExecutionRole",
+    "family": "cadvisor-node-exporter-definition",
+    "pidMode": null,
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "networkMode": null,
+    "cpu": "1024",
+    "inferenceAccelerators": null,
+    "proxyConfiguration": null,
+    "volumes": [
+        {
+            "fsxWindowsFileServerVolumeConfiguration": null,
+            "efsVolumeConfiguration": null,
+            "name": "root",
+            "host": {
+                "sourcePath": "/"
+            },
+            "dockerVolumeConfiguration": null
+        },
+        {
+            "fsxWindowsFileServerVolumeConfiguration": null,
+            "efsVolumeConfiguration": null,
+            "name": "cgroup",
+            "host": {
+                "sourcePath": "/cgroup"
+            },
+            "dockerVolumeConfiguration": null
+        },
+        {
+            "fsxWindowsFileServerVolumeConfiguration": null,
+            "efsVolumeConfiguration": null,
+            "name": "var_run",
+            "host": {
+                "sourcePath": "/var/run"
+            },
+            "dockerVolumeConfiguration": null
+        },
+        {
+            "fsxWindowsFileServerVolumeConfiguration": null,
+            "efsVolumeConfiguration": null,
+            "name": "var_lib_docker",
+            "host": {
+                "sourcePath": "/var/lib/docker"
+            },
+            "dockerVolumeConfiguration": null
+        },
+        {
+            "fsxWindowsFileServerVolumeConfiguration": null,
+            "efsVolumeConfiguration": null,
+            "name": "dev_disk",
+            "host": {
+                "sourcePath": "/dev/disk"
+            },
+            "dockerVolumeConfiguration": null
+        }
+    ],
+    "placementConstraints": [],
+    "tags": []
+}
